@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:id="@+id/TableLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:shrinkColumns="0"
+        android:stretchColumns="1" >
+
+        <TableRow >
+
+            <TextView android:text="公司帳戶"
+                android:layout_width="wrap_content" />
+
+            <TextView android:id="@+id/main_account"
+                android:layout_width="wrap_content" />
+        </TableRow>
+
+        <TableRow >
+
+            <TextView android:text="常用帳戶1"
+                android:layout_width="wrap_content"/>
+
+            <TextView android:id="@+id/account1"
+                android:layout_width="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
