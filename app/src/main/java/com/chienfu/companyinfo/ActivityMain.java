@@ -1,46 +1,48 @@
 package com.chienfu.companyinfo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class ActivityMain extends AppCompatActivity {
-    /** Called when the activity is first created. */
+
+    private static final int REQUEST_CODE = 1;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.basic_info);
-        Log.d("a","b");
+        setContentView(R.layout.activity_main);
+
+        Button btn_Page1 = (Button) findViewById(R.id.btn_Page1);
+        btn_Page1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ActivityMain.this, ActivityPage1.class);
+                intent.putExtra("Company_Name", "Company_Name：Chien-fu Tech.");
+                intent.putExtra("Company_ID", "Company_ID：45895171");
+//                startActivity(intent);//Isen：僅執行但不接收B頁成果
+                startActivityForResult(intent, REQUEST_CODE);//Isen：執行後帶回B頁成果
+            }
+        });
+
+
     }
 
-    /**
-     * 這個是按鈕按下去的回應函數，函數的參數中必須將View傳入，代表 被按下去的物件，本例中是Button元件
-     *
-     * @param view
-     */
-    public void nextView(View view) {
-        // 新增一個 Intent物件
-        Intent intent = new Intent();
-        // 設定這個Intent所指向的是Report的類別
-        intent.setClass(this, Report.class);
-
-        // Intent帶參數的方式
-        // 從Activity中找到main_account的文字編輯區塊
-        EditText main_account = (EditText) findViewById(R.id.main_account);
-        // 產生一個 Bundle讓Intent能夠傳遞參數
-        Bundle bundle = new Bundle();
-        // 放入一個鍵值為main_account, 對應值是文字編輯區塊中內容的字串的參數
-        bundle.putString("main_account", main_account.getText().toString());
-        // 將bundle放入intent之
-        intent.putExtras(bundle);
-
-        // 切換至這個Intent所指定的Activity
-        startActivity(intent);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case REQUEST_CODE:
+                //Isen：接收Page1帶過來的資料
+                TextView tv_Page1_Result = (TextView) findViewById(R.id.tv_Page1_Result);
+                Intent intent = getIntent();
+                String str_Page1_Result = data.getStringExtra("Page1_Result");
+                tv_Page1_Result.setText(str_Page1_Result);
+                break;
+        }
 
     }
 
