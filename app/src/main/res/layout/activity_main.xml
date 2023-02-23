@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.chienfu.companyinfo.ActivityMain">
+    tools:context="com.chienfu.companyinfo.MainActivity">
 
     <TextView
         android:id="@+id/tv_Page1_Result"
@@ -17,13 +17,33 @@
         android:layout_height="wrap_content"
         />
 
-    <Button
-        android:id="@+id/btn_Page1"
+    <TextView
+        android:id="@+id/tv_company_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="點我跳頁"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="parent"
         android:layout_below="@id/tv_Page1_Result"
+        />
+
+    <TextView
+        android:id="@+id/tv_company_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_company_name"
+        />
+
+    <TextView
+        android:id="@+id/tv_company_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_company_address"
+        />
+
+    <Button
+        android:id="@+id/btnGoToCompanyInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="填寫公司資訊"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/tv_company_phone"
         />
 </RelativeLayout>
